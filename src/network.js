@@ -5,6 +5,7 @@ const url = "https://0az6ku4pol.execute-api.us-west-2.amazonaws.com/prod"
 export async function getAll() {
   try {
     const res = await axios.get(`${url}/profile`)
-    console.log(res)
+    console.log(res.data)
+    return res.data
   } catch (error) {}
 }
