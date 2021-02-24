@@ -7,5 +7,19 @@ export async function getAll() {
     const res = await axios.get(`${url}/profile`)
     console.log(res.data)
     return res.data
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function createProfile(fname, lname) {
+  try {
+    const res = await axios.post(`${url}/profile`, {
+      fname: fname,
+      lname: lname,
+    })
+    return res.data
+  } catch (error) {
+    console.error(error)
+  }
 }

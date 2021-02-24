@@ -4,7 +4,7 @@ import { getAll } from "../network"
 const Home = () => {
   const [profiles, setProfiles] = useState([])
 
-  // make an api call
+  // api call to AWS server
   useEffect(() => {
     ;(async () => {
       const result = await getAll()
@@ -12,15 +12,11 @@ const Home = () => {
     })()
   }, [])
 
-  // save the data in state variable
-
-  // display the data on screen
-
   return (
     <div>
-      {profiles.map((pro) => {
+      {profiles.map((pro, idx) => {
         return (
-          <p>
+          <p key={idx}>
             {pro.fname} {pro.lname}{" "}
           </p>
         )
