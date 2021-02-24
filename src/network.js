@@ -12,7 +12,7 @@ export async function getAll() {
   }
 }
 
-export async function createProfile(fname, lname) {
+export async function postProfile(fname, lname) {
   try {
     const res = await axios.post(`${url}/profile`, {
       fname: fname,
