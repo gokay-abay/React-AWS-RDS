@@ -43,3 +43,12 @@ export async function updateOne(id, fname, lname) {
     console.error(error)
   }
 }
+
+export async function deleteOne(id) {
+  try {
+    const res = await axios.delete(`${url}/profile/${id}`)
+    return res.data
+  } catch (error) {
+    console.error(error)
+  }
+}
