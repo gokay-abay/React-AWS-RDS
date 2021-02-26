@@ -31,3 +31,15 @@ export async function getOne(id) {
     console.error(error)
   }
 }
+
+export async function updateOne(id, fname, lname) {
+  try {
+    const res = await axios.put(`${url}/profile/${id}`, {
+      fname: fname,
+      lname: lname,
+    })
+    return res.data
+  } catch (error) {
+    console.error(error)
+  }
+}
