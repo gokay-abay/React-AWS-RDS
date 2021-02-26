@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { getAll, postProfile } from "../network"
+import { Link } from "react-router-dom"
 
 const Home = () => {
   const [profiles, setProfiles] = useState([])
@@ -19,11 +20,12 @@ const Home = () => {
   const submit = async (e) => {
     e.preventDefault()
     const res = await postProfile(profile.fname, profile.lname)
-    console.log(res)
+    setProfile({ fname: "", lname: "" })
   }
 
   return (
     <div>
+      <h1>Profiles</h1>
       <form onSubmit={submit}>
         <input
           type="text"
@@ -40,9 +42,11 @@ const Home = () => {
       </form>
       {profiles.map((pro, idx) => {
         return (
-          <p key={idx}>
-            {pro.fname} {pro.lname}{" "}
-          </p>
+          <Link to={`profile/${pro.id}`}>
+            <p key={idx}>
+              {pro.fname} {pro.lname}{" "}
+            </p>
+          </Link>
         )
       })}
     </div>
