@@ -12,21 +12,22 @@ const ProfileDetail = () => {
   })
 
   useEffect(() => {
-    ;(async () => {
-      const res = await getOne(id)
-      setProfile(res[0])
-    })()
-  }, [])
+    getDataSetState(id)
+  }, [id])
 
   const submit = async (e) => {
     e.preventDefault()
     await updateOne(id, input.fname, input.lname)
-    const res = await getOne(id)
-    setProfile(res[0])
+    getDataSetState(id)
     setInput({
       fname: "",
       lname: "",
     })
+  }
+
+  const getDataSetState = async (id) => {
+    const res = await getOne(id)
+    setProfile(res[0])
   }
 
   return (

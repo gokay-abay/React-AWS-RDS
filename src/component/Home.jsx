@@ -19,7 +19,7 @@ const Home = () => {
 
   const submit = async (e) => {
     e.preventDefault()
-    const res = await postProfile(profile.fname, profile.lname)
+    await postProfile(profile.fname, profile.lname)
     setProfile({ fname: "", lname: "" })
   }
 
