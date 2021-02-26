@@ -22,3 +22,12 @@ export async function postProfile(fname, lname) {
     console.error(error)
   }
 }
+
+export async function getOne(id) {
+  try {
+    const res = await axios.get(`${url}/profile/${id}`)
+    return res.data
+  } catch (error) {
+    console.error(error)
+  }
+}
