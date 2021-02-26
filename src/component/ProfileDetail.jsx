@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getOne, updateOne } from "../network"
+import { getOne, updateOne, deleteOne } from "../network"
 
 const ProfileDetail = () => {
   const { id } = useParams()
@@ -30,11 +30,16 @@ const ProfileDetail = () => {
     setProfile(res[0])
   }
 
+  const handleClick = async () => {
+    await deleteOne(id)
+  }
+
   return (
     <div>
       <p>
         {profile.fname} {profile.lname}
       </p>
+      <button onClick={handleClick}>Delete Profile</button>
       <h2>Update first and last name</h2>
       <form onSubmit={submit}>
         <input
